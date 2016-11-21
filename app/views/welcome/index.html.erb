@@ -1,8 +1,19 @@
 
 <div class='content'>
-  <h5>Order count</h5>
-  <%= line_chart(@agr_date_count_hash, height: "150px") %>
 
-  <h5>Sales</h5>
-  <%= column_chart(@agr_date_sum_hash, height: "150px") %>
+  <h5 class='float-left'>Order count</h5>
+  <p class='subtitles'>
+    <%= @clean_orders.count %>
+  </p>
+  <div class='charts'>
+    <%= line_chart(@agr_date_count_hash, height: "150px") %>
+  </div>
+
+  <h5 class='float-left'>Sales</h5>
+  <p class='subtitles'>
+    <%= @total %>
+  </p>
+  <div class='charts'>
+    <%= column_chart(@agr_date_sum_hash, height: "150px") %>
+  </div>
 </div>

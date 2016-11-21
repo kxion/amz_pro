@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'peddler'
 gem 'chartkick'
 gem 'groupdate'
+gem 'monetize'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -64,3 +64,21 @@ footer a {
 .content {
   margin: 1em;
 }
+
+.float-left {
+  display: inline-block;
+  float: left;
+  padding-right: 1em;
+}
+
+h5 {
+  margin-top: 0;
+}
+
+.subtitles {
+  font-size: 14px;
+}
+
+.charts {
+  margin-bottom: 2em;
+}
