@@ -12,8 +12,9 @@ class WelcomeController < ApplicationController
     )
 
     response = client.list_orders created_after: '2016-10-25'
-    clean_orders = response.parse
-    render :json => clean_orders, status: 200
+    clean_orders_hash = response.parse
+    @clean_orders = clean_orders_hash["Orders"]["Order"]
+
   end
 
 end
