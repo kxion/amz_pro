@@ -1,5 +1,14 @@
 
+<h5>Order count</h5>
+<%= @clean_orders.count %><br><br>
+
+<%= line_chart(@agr_date_count_hash) %>
+
+
 <% @clean_orders.each do |order| %>
-  <%= order["PurchaseDate"] %>
+  <%= order["PurchaseDate"] %><br>
 
 <% end %>
+
+
+@clean_orders.PurchaseDate
