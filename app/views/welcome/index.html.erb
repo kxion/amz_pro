@@ -1,16 +1,8 @@
 
-<h5>Order count</h5>
-<%= @clean_orders.count %><br><br>
+<div class='content'>
+  <h5>Order count</h5>
+  <%= line_chart(@agr_date_count_hash, height: "150px") %>
 
-<%= line_chart(@agr_date_count_hash) %>
-
-<%= line_chart(@agr_date_sum_hash) %>
-
-
-<% @clean_orders.each do |order| %>
-  <%= order["PurchaseDate"] %><br>
-
-<% end %>
-
-
-@clean_orders.PurchaseDate
+  <h5>Sales</h5>
+  <%= column_chart(@agr_date_sum_hash, height: "150px") %>
+</div>

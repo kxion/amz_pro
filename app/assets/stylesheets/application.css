@@ -60,3 +60,7 @@ footer a {
   display: inline-block;
   margin: 0 20px;
 }
+
+.content {
+  margin: 1em;
+}
