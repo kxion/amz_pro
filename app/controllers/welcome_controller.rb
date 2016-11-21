@@ -31,6 +31,21 @@ class WelcomeController < ApplicationController
       end
     }
 
+    date_sum_hash = {}
+    @clean_orders.each { |order|
+      date_sum_hash[order["PurchaseDate"]] = order.dig("OrderTotal", "Amount").to_f
+    }
+
+    @agr_date_sum_hash = {}
+    date_sum_hash.each { |order_date, amount|
+      date_no_time = order_date[0..9]
+      if @agr_date_sum_hash.key?(date_no_time) == false && amount != nil
+        @agr_date_sum_hash[date_no_time] = amount
+      elsif amount != nil
+        @agr_date_sum_hash[date_no_time] += amount
+      end
+    }
+
   end
 
 end

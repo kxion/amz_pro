@@ -4,6 +4,8 @@
 
 <%= line_chart(@agr_date_count_hash) %>
 
+<%= line_chart(@agr_date_sum_hash) %>
+
 
 <% @clean_orders.each do |order| %>
   <%= order["PurchaseDate"] %><br>
