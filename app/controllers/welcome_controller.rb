@@ -5,15 +5,13 @@ require 'money'
 class WelcomeController < ApplicationController
 
   def index
-
     mws_call
-
     format_order_count
-
     format_order_sum
-
     sales_total
+  end
 
+  def show
   end
 
   private
@@ -23,7 +21,7 @@ class WelcomeController < ApplicationController
         primary_marketplace_id: "",
         merchant_id: "",
         aws_access_key_id: "",
-        aws_secret_access_key: "",
+        aws_secret_access_key: ""
       )
 
       response = client.list_orders created_after: '2016-10-25'
