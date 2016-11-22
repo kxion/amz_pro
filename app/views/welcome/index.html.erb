@@ -17,3 +17,11 @@
     <%= column_chart(@agr_date_sum_hash, height: "150px") %>
   </div>
 </div>
+
+<p class='search-bar'>
+  <%= form_tag("/search", method: "get") do %>
+    <%= label_tag(:q, "Refresh with orders on and after  ") %>
+    <%= date_field_tag(:q) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+</p>
