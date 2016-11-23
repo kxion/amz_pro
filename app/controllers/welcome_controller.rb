@@ -7,17 +7,19 @@ class WelcomeController < ApplicationController
   def index
     @mws_client = MwsClient.new(current_merchant_id, mws_auth_token)
 
-    if(params.has_key?(:q))
-      @temp=params[:q]
+    if params.has_key?(:q)
+      @created_after_date = params[:q]
+    else
+      @created_after_date = Date.today.at_beginning_of_month
     end
 
-    # def mws_login?
-    #   session[:auth_hash] != nil ? true : false
-    # end
+    if params.has_key?(:qq)
+      @created_before_date = params[:qq]
+    else
+      @created_before_date = Date.today
+    end
 
-    # @day_one_current_month = Date.today.at_beginning_of_month
-
-    @clean_orders = @mws_client.get_clean_orders(@temp)
+    @clean_orders = @mws_client.get_clean_orders(@created_after_date, @created_before_date)
     format_order_count
     format_order_sum
     sales_total
