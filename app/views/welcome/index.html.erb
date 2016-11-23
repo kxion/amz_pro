@@ -19,9 +19,14 @@
 </div>
 
 <p class='search-bar'>
-  <%= form_tag("/search", method: "get") do %>
+  <%= form_tag("/welcome", method: "get") do %>
     <%= label_tag(:q, "Refresh with orders on and after  ") %>
     <%= date_field_tag(:q) %>
+    <%= label_tag(:qq, "Refresh with orders before  ") %>
+    <%= date_field_tag(:qq) %>
     <%= submit_tag("Search") %>
   <% end %>
 </p>
+
+<%= @created_after_date || 'missing date' %>
+<%= @day_one_current_month %>

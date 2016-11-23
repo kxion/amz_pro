@@ -6,7 +6,11 @@ class WelcomeController < ApplicationController
 
   def index
     @mws_client = MwsClient.new(current_merchant_id, mws_auth_token)
-    @clean_orders = @mws_client.get_clean_orders
+
+    get_start_date
+    get_end_date
+
+    @clean_orders = @mws_client.get_clean_orders(@created_after_date, @created_before_date)
     format_order_count
     format_order_sum
     sales_total
@@ -57,6 +61,22 @@ class WelcomeController < ApplicationController
         @total += amount
       }
       @total = Money.us_dollar(@total * 100).format
+    end
+
+    def get_start_date
+      if params.has_key?(:q)
+        @created_after_date = params[:q]
+      else
+        @created_after_date = Date.today.at_beginning_of_month
+      end
+    end
+
+    def get_end_date
+      if params.has_key?(:qq)
+        @created_before_date = params[:qq]
+      else
+        @created_before_date = Date.today
+      end
     end
 
 end

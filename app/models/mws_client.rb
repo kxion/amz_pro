@@ -5,7 +5,7 @@ class MwsClient
     @auth_token = auth_token
   end
 
-  def get_clean_orders
+  def get_clean_orders(created_after, created_before)
     client = MWS.orders(
       primary_marketplace_id: "",
       merchant_id: @merchant_id,
@@ -14,7 +14,10 @@ class MwsClient
       auth_token: @auth_token
     )
 
-    response = client.list_orders created_after: '2016-10-25'
+    @created_after = created_after
+    @created_before = created_before
+
+    response = client.list_orders created_after: @created_after, created_before: @created_before
     clean_orders_hash = response.parse
     clean_orders = clean_orders_hash["Orders"]["Order"]
   end
