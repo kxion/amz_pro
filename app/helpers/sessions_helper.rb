@@ -1,7 +1,11 @@
 module SessionsHelper
 
-  def aws_auth_token
-    session[:auth_hash]
+  def mws_auth_token
+    session[:auth_hash]["credentials"]["token"]
+  end
+
+  def current_merchant_id
+    session[:merchant_id]
   end
 
   # def check_aws_login?

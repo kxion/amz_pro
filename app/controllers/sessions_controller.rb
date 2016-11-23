@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
     @user = User.confirm(user_params)
     if @user
       session[:user_id] = @user.id
+      session[:merchant_id] = @user.merchant_id
       @current_user = @user
       flash[:success] = "Successfully logged in."
       redirect_to '/auth/amazon'
