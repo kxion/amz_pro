@@ -12,6 +12,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    auth_hash = session[:auth_hash]
   end
 
   private
