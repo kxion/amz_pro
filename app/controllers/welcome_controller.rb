@@ -6,7 +6,18 @@ class WelcomeController < ApplicationController
 
   def index
     @mws_client = MwsClient.new(current_merchant_id, mws_auth_token)
-    @clean_orders = @mws_client.get_clean_orders
+
+    if(params.has_key?(:q))
+      @temp=params[:q]
+    end
+
+    # def mws_login?
+    #   session[:auth_hash] != nil ? true : false
+    # end
+
+    # @day_one_current_month = Date.today.at_beginning_of_month
+
+    @clean_orders = @mws_client.get_clean_orders(@temp)
     format_order_count
     format_order_sum
     sales_total
