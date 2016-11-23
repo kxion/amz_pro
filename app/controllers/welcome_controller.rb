@@ -49,7 +49,7 @@ class WelcomeController < ApplicationController
     def format_order_sum
       date_sum_hash = {}
       @clean_orders.each { |order|
-        date_sum_hash[order["PurchaseDate"]] = order.dig("OrderTotal", "Amount").to_f
+        date_sum_hash[order["PurchaseDate"]] = order.dig("OrderTotal", "Amount")._f
       }
 
       @agr_date_sum_hash = {}
