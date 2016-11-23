@@ -5,7 +5,8 @@ require 'money'
 class WelcomeController < ApplicationController
 
   def index
-    mws_call
+    @mws_client = MwsClient.new(current_merchant_id, mws_auth_token)
+    @clean_orders = @mws_client.get_clean_orders
     format_order_count
     format_order_sum
     sales_total
@@ -15,19 +16,6 @@ class WelcomeController < ApplicationController
   end
 
   private
-
-    def mws_call
-      client = MWS.orders(
-        primary_marketplace_id: "",
-        merchant_id: "",
-        aws_access_key_id: "",
-        aws_secret_access_key: ""
-      )
-
-      response = client.list_orders created_after: '2016-10-25'
-      clean_orders_hash = response.parse
-      @clean_orders = clean_orders_hash["Orders"]["Order"]
-    end
 
     def format_order_count
       date_count_hash = {}
@@ -49,7 +37,7 @@ class WelcomeController < ApplicationController
     def format_order_sum
       date_sum_hash = {}
       @clean_orders.each { |order|
-        date_sum_hash[order["PurchaseDate"]] = order.dig("OrderTotal", "Amount")._f
+        date_sum_hash[order["PurchaseDate"]] = order.dig("OrderTotal", "Amount").to_f
       }
 
       @agr_date_sum_hash = {}
