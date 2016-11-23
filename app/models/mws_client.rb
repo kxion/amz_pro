@@ -1,8 +1,8 @@
 class MwsClient
 
   def initialize (merchant_id, auth_token)
-    @auth_token = auth_token
     @merchant_id = merchant_id
+    @auth_token = auth_token
   end
 
   def get_clean_orders

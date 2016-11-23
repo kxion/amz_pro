@@ -22,24 +22,6 @@ class SessionsController < ApplicationController
   def update
     auth_hash = request.env['omniauth.auth']
     session[:auth_hash] = auth_hash
-  # render :text => auth_hash["uid"]
-
-    # client = MWS.orders(
-    #   primary_marketplace_id: "",
-    #   # merchant_id: auth_hash["uid"][14..-1],
-    #   aws_access_key_id: "",
-    #   aws_secret_access_key: "",
-    #   auth_token: auth_hash["credentials"]["token"]
-    # )
-
-    #     response = client.list_orders created_after: '2016-10-25'
-    #     clean_orders_hash = response.parse
-    #     @clean_orders = clean_orders_hash["Orders"]["Order"]
-
-    #     render :json => @clean_orders
-        # render :json => auth_hash["credentials"]["token"]
-        # render :text => session
-    # redirect_to user_path(@current_user.id)
     redirect_to welcome_index_path
   end
 
