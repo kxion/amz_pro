@@ -6,7 +6,7 @@
     <%= @clean_orders.count %>
   </p>
   <div class='charts'>
-    <%= line_chart(@agr_date_count_hash, height: "150px") %>
+    <%= line_chart(@agr_period_count_hash, height: "150px") %>
   </div>
 
   <h5 class='float-left'>Sales</h5>
@@ -14,7 +14,7 @@
     <%= @total %>
   </p>
   <div class='charts'>
-    <%= column_chart(@agr_date_sum_hash, height: "150px") %>
+    <%= column_chart(@agr_period_sum_hash, height: "150px") %>
   </div>
 </div>
 
