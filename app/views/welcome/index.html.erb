@@ -20,19 +20,20 @@
 
 <p class='search-bar'>
   <%= form_tag("/welcome", method: "get") do %>
-    <%= label_tag(:q, "Refresh with orders on and after  ") %>
+    <%= label_tag(:q, "Refresh with orders on and after") %>
     <%= date_field_tag(:q) %>
-    <%= label_tag(:qq, "Refresh with orders before  ") %>
+    <%= label_tag(:qq, "Refresh with orders before") %>
     <%= date_field_tag(:qq) %>
+    <%= label_tag(:qq, "Group orders by") %>
+    <%= select(:qqq, "group_by_period", {
+      :day => 'day',
+      :week => 'week',
+      :month => 'month',
+      :quarter => 'quarter',
+      :year => 'year'}) %>
     <%= submit_tag("Search") %>
+
   <% end %>
 </p>
 
-<%= @agr_period_sum_hash %>
-<%= @period_function %>
-
-<%= @created_after_date || 'missing date' %>
-<%= @day_one_current_month %>
-
-<%= @agr_date_count_hash %>
-
+<%= @group_by_period %>

@@ -9,13 +9,14 @@ class WelcomeController < ApplicationController
 
     get_start_date
     get_end_date
+    get_group_by_period
 
     @clean_orders = @mws_client.get_clean_orders(@created_after_date, @created_before_date)
     format_order_count
     format_order_sum
     sales_total
-    count_aggregator(@agr_date_count_hash, 'day')
-    sum_aggregator(@agr_date_sum_hash, 'year')
+    count_aggregator(@agr_date_count_hash, @group_by_period)
+    sum_aggregator(@agr_date_sum_hash, @group_by_period)
   end
 
   def show
@@ -120,7 +121,7 @@ class WelcomeController < ApplicationController
     end
 
     def get_start_date
-      if params.has_key?(:q)
+      if params.has_key?(:q) && params[:q] != ''
         @created_after_date = params[:q]
       else
         @created_after_date = Date.today.at_beginning_of_month
@@ -128,11 +129,20 @@ class WelcomeController < ApplicationController
     end
 
     def get_end_date
-      if params.has_key?(:qq)
+      if params.has_key?(:qq) && params[:qq] != ''
         @created_before_date = params[:qq]
       else
         @created_before_date = Date.today
       end
     end
 
+    def get_group_by_period
+      if params.has_key?(:qqq) && params[:qqq]["group_by_period"] != ''
+        @group_by_period = params[:qqq]["group_by_period"]
+      else
+        @group_by_period = 'day'
+      end
+    end
+
 end
+
