@@ -14,8 +14,8 @@ class WelcomeController < ApplicationController
     format_order_count
     format_order_sum
     sales_total
-    sum_aggregator(@agr_date_sum_hash, 'month')
-    count_aggregator(@agr_date_count_hash, 'month')
+    count_aggregator(@agr_date_count_hash, 'day')
+    sum_aggregator(@agr_date_sum_hash, 'year')
   end
 
   def show
@@ -69,46 +69,54 @@ class WelcomeController < ApplicationController
       @set = set
       @period = period
 
-      period_map = {
-        'week' => 'at_beginning_of_week',
-        'month' => 'at_beginning_of_month',
-        'quarter' => 'at_beginning_of_quarter',
-        'year' => 'at_beginning_of_year'
-      }
-      @period_function = period_map[@period]
+      if @period == 'day'
+        return @agr_period_sum_hash = @set
+      else
+        period_map = {
+          'week' => 'at_beginning_of_week',
+          'month' => 'at_beginning_of_month',
+          'quarter' => 'at_beginning_of_quarter',
+          'year' => 'at_beginning_of_year'
+        }
+        @period_function = period_map[@period]
 
-      @agr_period_sum_hash = {}
-      @set.each { |order_date, amount|
-        aggregated_date = Date.parse(order_date).send(@period_function)
-        if @agr_period_sum_hash.key?(aggregated_date) == false && amount != nil
-          @agr_period_sum_hash[aggregated_date] = amount
-        elsif amount != nil
-          @agr_period_sum_hash[aggregated_date] += amount
-        end
-      }
+        @agr_period_sum_hash = {}
+        @set.each { |order_date, amount|
+          aggregated_date = Date.parse(order_date).send(@period_function)
+          if @agr_period_sum_hash.key?(aggregated_date) == false && amount != nil
+            @agr_period_sum_hash[aggregated_date] = amount
+          elsif amount != nil
+            @agr_period_sum_hash[aggregated_date] += amount
+          end
+        }
+      end
     end
 
     def count_aggregator(set, period)
       @set = set
       @period = period
 
-      period_map = {
-        'week' => 'at_beginning_of_week',
-        'month' => 'at_beginning_of_month',
-        'quarter' => 'at_beginning_of_quarter',
-        'year' => 'at_beginning_of_year'
-      }
-      @period_function = period_map[@period]
+      if @period == 'day'
+        return @agr_period_count_hash = @set
+      else
+        period_map = {
+          'week' => 'at_beginning_of_week',
+          'month' => 'at_beginning_of_month',
+          'quarter' => 'at_beginning_of_quarter',
+          'year' => 'at_beginning_of_year'
+        }
+        @period_function = period_map[@period]
 
-      @agr_period_count_hash = {}
-      @set.each { |order_date, amount|
-        aggregated_date = Date.parse(order_date).send(@period_function)
-        if @agr_period_count_hash.key?(aggregated_date) == false && amount != nil
-          @agr_period_count_hash[aggregated_date] = amount
-        elsif amount != nil
-          @agr_period_count_hash[aggregated_date] += amount
-        end
-      }
+        @agr_period_count_hash = {}
+        @set.each { |order_date, amount|
+          aggregated_date = Date.parse(order_date).send(@period_function)
+          if @agr_period_count_hash.key?(aggregated_date) == false && amount != nil
+            @agr_period_count_hash[aggregated_date] = amount
+          elsif amount != nil
+            @agr_period_count_hash[aggregated_date] += amount
+          end
+        }
+      end
     end
 
     def get_start_date
