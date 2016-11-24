@@ -32,8 +32,18 @@
       :quarter => 'quarter',
       :year => 'year'}) %>
     <%= submit_tag("Search") %>
-
   <% end %>
 </p>
 
-<%= @group_by_period %>
+<h5 class='float-left'>Displaying orders between</h5>
+<p class='subtitles, float-left'>
+  <%= @created_after_date %>
+</p>
+<h5 class='float-left'>and</h5>
+<p class='subtitles, float-left'>
+  <%= @created_before_date %>
+</p>
+<h5 class='float-left'>grouped by</h5>
+<p class='subtitles, float-left'>
+  <%= @group_by_period %>
+</p>
