@@ -14,6 +14,7 @@ class WelcomeController < ApplicationController
     format_order_count
     format_order_sum
     sales_total
+    aggregator(@agr_date_sum_hash, 'week')
   end
 
   def show
@@ -61,6 +62,33 @@ class WelcomeController < ApplicationController
         @total += amount
       }
       @total = Money.us_dollar(@total * 100).format
+    end
+
+    def aggregator(set, period)
+      @set = set
+      @period = period
+
+      period_map = {
+        # 'day' =>
+        'week' => 'at_beginning_of_week'
+        # 'month' =>
+        # 'quarter' =>
+        # 'year' =>
+      }
+
+      @period_function = period_map[@period]
+
+
+      @agr_period_sum_hash = {}
+      @set.each { |order_date, amount|
+        aggregated_date = Date.parse(order_date).send(@period_function)
+        if @agr_period_sum_hash.key?(aggregated_date) == false && amount != nil
+          @agr_period_sum_hash[aggregated_date] = amount
+        elsif amount != nil
+          @agr_period_sum_hash[aggregated_date] += amount
+        end
+      }
+
     end
 
     def get_start_date
