@@ -25,4 +25,8 @@ class SessionsController < ApplicationController
     redirect_to welcome_index_path
   end
 
+  def destroy
+    logout
+  end
+
 end
