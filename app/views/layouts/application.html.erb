@@ -18,7 +18,7 @@
 
       <ul>
         <% if current_merchant_id != nil %>
-          <li><%= link_to "Profile", welcome_index_path %></li>
+          <li><%= link_to session[:auth_hash]["info"]["email"], welcome_index_path %></li>
           <li><%= link_to "Log Out", logout_path %></li>
         <% else %>
           <li><%= link_to "Create Account", new_user_path %></li>
