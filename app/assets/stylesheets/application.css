@@ -27,7 +27,7 @@ h1 {
 nav {
   background: #232f3e;
   color: white;
-  padding: 1em 0 0 1em;
+  padding: 1em 0 1em 1em;
   border-bottom: 2px solid;
   border-color: #F37D4C;
 }
@@ -51,9 +51,13 @@ footer {
   margin: 0 6px;
 }
 
-footer a {
+nav a {
   color: white;
   text-decoration: none;
+}
+
+nav h1, h5 {
+  display: inline;
 }
 
 .word-space {
