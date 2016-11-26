@@ -13,13 +13,14 @@
 
   <body>
     <nav>
-      <h1><strong>AMZ</strong> Pro</h1>
+      <!-- <h1><strong>AMZ</strong> Pro</h1> -->
+      <h1><%= link_to 'AMZ Pro', root_path %></h1>
     </nav>
 
     <%= yield %>
 
     <footer>
-      <p>AMZ Pro <span class="word-space">|</span> <%= link_to 'About', root_path %></p>
+      <p>AMZ Pro <span class="word-space">|</span> <%= link_to 'About', about_path %></p>
     </footer>
   </body>
 </html>

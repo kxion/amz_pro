@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   get "/logout", to: "sessions#destroy"
   post "/sessions", to: "sessions#create"
   get '/auth/:provider/callback', to: 'sessions#update'
+  get "/about", to: "about#index"
 
 end
