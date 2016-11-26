@@ -13,10 +13,16 @@
 
   <body>
     <nav>
-      <!-- <h1><strong>AMZ</strong> Pro</h1> -->
-      <h1><%= link_to 'AMZ Pro', root_path %></h1>
+      <h1>
+        <%= link_to(root_path) do %>
+          <strong>AMZ</strong>  <span>Pro</span>
+        <% end %>
+      </h1>
+
       <div class="right-nav">
-        <h5><%= link_to 'About', about_path %></h5>
+        <h5>
+          <%= link_to 'About', about_path %>
+        </h5>
         <% if current_merchant_id != nil %>
           <h5><%= link_to session[:auth_hash]["info"]["email"], welcome_index_path %></h5>
           <h5><%= link_to "Log Out", logout_path %></h5>
@@ -24,7 +30,7 @@
           <h5><%= link_to "Create Account", new_user_path %></h5>
           <h5><%= link_to "Log In", login_path %></h5>
         <% end %>
-        </div>
+      </div>
     </nav>
 
     <div class="wrap">
