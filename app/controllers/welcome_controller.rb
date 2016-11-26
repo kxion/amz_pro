@@ -5,18 +5,24 @@ require 'money'
 class WelcomeController < ApplicationController
 
   def index
-    @mws_client = MwsClient.new(current_merchant_id, mws_auth_token)
+    if complete_login? == false
+      redirect_to root_path
+      flash[:error] = "Please login to view your dash"
 
-    get_start_date
-    get_end_date
-    get_group_by_period
+    else
+      @mws_client = MwsClient.new(current_merchant_id, mws_auth_token)
 
-    @clean_orders = @mws_client.get_clean_orders(@created_after_date, @created_before_date)
-    format_order_count
-    format_order_sum
-    sales_total
-    count_aggregator(@agr_date_count_hash, @group_by_period)
-    sum_aggregator(@agr_date_sum_hash, @group_by_period)
+      get_start_date
+      get_end_date
+      get_group_by_period
+
+      @clean_orders = @mws_client.get_clean_orders(@created_after_date, @created_before_date)
+      format_order_count
+      format_order_sum
+      sales_total
+      count_aggregator(@agr_date_count_hash, @group_by_period)
+      sum_aggregator(@agr_date_sum_hash, @group_by_period)
+    end
   end
 
   def show

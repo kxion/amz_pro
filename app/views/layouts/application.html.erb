@@ -13,13 +13,42 @@
 
   <body>
     <nav>
-      <h1><strong>AMZ</strong> Pro</h1>
+      <!-- <h1><strong>AMZ</strong> Pro</h1> -->
+      <h1><%= link_to 'AMZ Pro', root_path %></h1>
+
+      <ul>
+        <% if current_merchant_id != nil %>
+          <li><%= link_to session[:auth_hash]["info"]["email"], welcome_index_path %></li>
+          <li><%= link_to "Log Out", logout_path %></li>
+        <% else %>
+          <li><%= link_to "Create Account", new_user_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+      </ul>
     </nav>
+
+    <div class="wrap">
+      <% if flash[:error] %>
+        <div class="container small-container">
+          <div class="alert alert-danger">
+            <%= flash[:error] %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if flash[:success] %>
+        <div class="container small-container">
+          <div class="alert alert-success">
+            <%= flash[:success] %>
+          </div>
+        </div>
+      <% end %>
+    </div><!-- End Wrap -->
 
     <%= yield %>
 
     <footer>
-      <p>AMZ Pro <span class="word-space">|</span> <%= link_to 'About', root_path %></p>
+      <p>AMZ Pro <span class="word-space">|</span> <%= link_to 'About', about_path %></p>
     </footer>
   </body>
 </html>

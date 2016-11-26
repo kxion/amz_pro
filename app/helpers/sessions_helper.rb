@@ -21,4 +21,11 @@ module SessionsHelper
       session[:merchant_id] != nil ? true : false
     end
 
+  def logout
+    session[:merchant_id] = nil
+    session[:auth_hash] = nil
+    flash[:success] = "Successfully logged out."
+    redirect_to root_path
+  end
+
 end
