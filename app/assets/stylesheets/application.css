@@ -58,6 +58,7 @@ nav a {
 
 nav h1, h5 {
   display: inline;
+  margin: 1em;
 }
 
 .word-space {
@@ -89,4 +90,8 @@ h5 {
 
 .search-bar {
   text-align: center;
+}
+
+.right-nav {
+  float: right;
 }
