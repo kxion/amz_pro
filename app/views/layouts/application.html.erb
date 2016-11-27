@@ -31,29 +31,30 @@
           <h5><%= link_to "Create Account", new_user_path %></h5>
           <h5><%= link_to "Log In", login_path %></h5>
         <% end %>
+
+        <div class="wrap">
+          <% if flash[:error] %>
+            <br><br><br>
+            <div class="container small-container">
+              <div class="alert alert-danger">
+                <%= flash[:error] %>
+              </div>
+            </div>
+          <% end %>
+
+          <% if flash[:success] %>
+            <br><br><br>
+            <div class="container small-container">
+              <div class="alert alert-success">
+                <%= flash[:success] %>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
     </nav>
     <div class='line'></div>
 
-    <div class="wrap">
-      <% if flash[:error] %>
-        <br><br><br>
-        <div class="container small-container">
-          <div class="alert alert-danger">
-            <%= flash[:error] %>
-          </div>
-        </div>
-      <% end %>
-
-      <% if flash[:success] %>
-        <br><br><br>
-        <div class="container small-container">
-          <div class="alert alert-success">
-            <%= flash[:success] %>
-          </div>
-        </div>
-      <% end %>
-    </div>
     <br><br><br>
 
     <%= yield %>
