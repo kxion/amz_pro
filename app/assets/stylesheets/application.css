@@ -24,26 +24,26 @@ h1 {
   font-weight: 100;
 }
 
-nav {
-  background: #232f3e;
-  color: white;
-  padding: 1em 0 1em 1em;
-  border-bottom: 2px solid;
-  border-color: #F37D4C;
+.box-img {
+  background-image: url("http://i.imgur.com/YKKYp7w.png");
+  min-height: 100%;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #4c5253;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  padding: 25px 0;
-  margin: 0;
+nav {
+  background: linear-gradient(to top, rgba(35,47,62,.8), rgba(35,47,62,.95));
+  height: 3em;
   color: white;
+  border-bottom: 2px solid;
+  border-color: #F37D4C;
+  position: fixed;
+  left: 0;
+  right: 0;
 }
 
 .word-space {
@@ -95,4 +95,9 @@ h5 {
 .right-nav {
   float: right;
   margin-right: 2em;
+}
+
+.full-nav {
+  height: 3em;
+  background: linear-gradient(to top, rgba(35,47,62,.95), rgba(35,47,62,1));
 }
