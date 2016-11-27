@@ -1,24 +1,25 @@
-
-<div class="form-content-white">
-  <h1>Sign Up</h1>
-  <%= form_for @user do |f| %>
-    <div class="container-gray">
-      <div class="input-field">
-        <%= f.text_field :username, placeholder: "Name" %>
+<div class='content'>
+  <div class="form-content-white">
+    <h1>Sign Up</h1>
+    <%= form_for @user do |f| %>
+      <div class="container-gray">
+        <div class="input-field">
+          <%= f.text_field :username, placeholder: "Name" %>
+        </div>
+        <div class="input-field">
+          <%= f.email_field :email, placeholder: "Email" %>
+        </div>
+        <div class="input-field">
+          <%= f.password_field :merchant_id, placeholder: "Merchant id" %>
+        </div>
+        <div class="input-field">
+          <%= f.password_field :password, placeholder: "Password" %>
+        </div>
+        <div class="input-field">
+          <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
+        </div>
+        <%= f.submit "Sign Up", class: "button" %>
       </div>
-      <div class="input-field">
-        <%= f.email_field :email, placeholder: "Email" %>
-      </div>
-      <div class="input-field">
-        <%= f.password_field :merchant_id, placeholder: "Merchant id" %>
-      </div>
-      <div class="input-field">
-        <%= f.password_field :password, placeholder: "Password" %>
-      </div>
-      <div class="input-field">
-        <%= f.password_field :password_confirmation, placeholder: "Confirm Password" %>
-      </div>
-      <%= f.submit "Sign Up", class: "button" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

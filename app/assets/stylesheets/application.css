@@ -24,26 +24,36 @@ h1 {
   font-weight: 100;
 }
 
-nav {
-  background: #232f3e;
-  color: white;
-  padding: 1em 0 0 1em;
-  border-bottom: 2px solid;
-  border-color: #F37D4C;
+.box-img {
+  background-image: url("http://i.imgur.com/0pyVCyI.jpg");
+  background-repeat: no-repeat;
+  background-position:left;
+  min-height: 100%;
+  max-width: 972px;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 
-footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: #4c5253;
-  width: 100%;
-  text-align: center;
-  font-size: 14px;
-  padding: 25px 0;
-  margin: 0;
+nav {
+  background: linear-gradient(to top, rgba(35,47,62,.8), rgba(35,47,62,.95));
+  height: 3em;
   color: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.line {
+  background: rgba(243,125,76,.3);
+  height: 1px;
+  z-index: 100;
+  position:relative;
+  top: 10px;
 }
 
 .word-space {
@@ -51,9 +61,21 @@ footer {
   margin: 0 6px;
 }
 
-footer a {
-  color: white;
+nav a {
+  color: #F37D4C;
   text-decoration: none;
+}
+
+nav h5 {
+  font-weight: normal;
+  vertical-align: middle;
+  font-family: 'Roboto';
+  font-size: 15px;
+}
+
+nav h1, h5 {
+  display: inline;
+  margin: 1em;
 }
 
 .word-space {
@@ -63,6 +85,7 @@ footer a {
 
 .content {
   margin: 1em;
+  text-align: center;
 }
 
 .float-left {
@@ -77,6 +100,8 @@ h5 {
 
 .subtitles {
   font-size: 14px;
+  float: left;
+  margin-top: 0;
 }
 
 .charts {
@@ -85,4 +110,74 @@ h5 {
 
 .search-bar {
   text-align: center;
+}
+
+.right-nav {
+  float: right;
+  margin-right: 2em;
+}
+
+.full-nav {
+  height: 3em;
+  background: linear-gradient(to top, rgba(35,47,62,.95), rgba(35,47,62,1));
+}
+
+.home {
+  float: left;
+  font-family: 'Roboto';
+}
+
+.large-font {
+  font-size: 50px;
+  margin: 0;
+  margin-left: 1em;
+
+}
+
+h2 {
+  font-family: 'Roboto';
+  font-weight: 100;
+  font-size: 40px;
+  margin: 3em;
+}
+
+.author {
+  font-family: 'Roboto';
+  font-weight: 800;
+  font-size: 20px;
+  margin: 0 14em 0 14em;
+}
+
+.links {
+  text-decoration: none;
+  font-size: 15px;
+  color: black;
+}
+
+.alert {
+  margin: 0 2em;
+  color: black
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: linear-gradient(to top, rgba(35,47,62,.95), rgba(35,47,62,1));
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  height: 1em;
+  margin: 0;
+  color: white;
+}
+
+.subtitle-right {
+  float: right;
+  margin: 10em 0 0 0 ;
+  font-family: 'Roboto';
+  font-weight: 800;
+  font-size: 26px;
+  width: 11em;
 }
