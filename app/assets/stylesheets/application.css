@@ -101,6 +101,7 @@ h5 {
 .subtitles {
   font-size: 14px;
   float: left;
+  margin-top: 0;
 }
 
 .charts {
