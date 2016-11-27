@@ -37,6 +37,7 @@
 
     <div class="wrap">
       <% if flash[:error] %>
+        <br><br><br>
         <div class="container small-container">
           <div class="alert alert-danger">
             <%= flash[:error] %>
@@ -45,6 +46,7 @@
       <% end %>
 
       <% if flash[:success] %>
+        <br><br><br>
         <div class="container small-container">
           <div class="alert alert-success">
             <%= flash[:success] %>
@@ -52,9 +54,8 @@
         </div>
       <% end %>
     </div>
-    <br><br><br><br><br><br>
+    <br><br><br>
 
     <%= yield %>
-
   </body>
 </html>
