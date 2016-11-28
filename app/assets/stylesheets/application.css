@@ -200,3 +200,19 @@ footer {
   font-family: 'Roboto';
   font-weight: 800;
 }
+
+input {
+  padding: 1em;
+  margin: 1em;
+  width: 40%;
+}
+
+.button {
+  width: 10em;
+}
+
+.search-bar input {
+  width: 11em;
+  padding: 0 0 0 1em;
+  margin: 0em;
+}
