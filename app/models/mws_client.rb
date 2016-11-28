@@ -25,6 +25,8 @@ class MwsClient
 
     if next_token?(@clean_orders_hash) == true
       process_next_request
+    else
+      return clean_orders
     end
 
   end
@@ -45,14 +47,18 @@ class MwsClient
 
   def process_next_request
     @batch_count = 1
-    @all_hashes = [{'@clean_orders_hash' => @clean_orders_hash}]
+    @all_hashes = [@clean_orders_hash["Orders"]["Order"]]
     while next_token?(get_hash) == true do
       response = @client.list_orders_by_next_token(get_next_token(get_hash))
       @batch_count += 1
       instance_variable_set('@response' + @batch_count.to_s, response.parse)
-      @all_hashes.push('@response' + @batch_count.to_s => eval('@response' + @batch_count.to_s))
+      @all_hashes.push(eval('@response' + @batch_count.to_s)["Orders"]["Order"])
     end
+    combine_order_hashes
+  end
 
+  def combine_order_hashes
+    @final_hash = [*@all_hashes.map(&:to_a).flatten]
   end
 
 end
