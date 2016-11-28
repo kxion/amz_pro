@@ -1,29 +1,39 @@
 
 <div class='content'>
 
-  <h5 class='float-left'>Order count</h5>
-  <p class='subtitles'>
+  <h5 class='float-left margin-top'>Order count</h5>
+  <p class='subtitles margin-top'>
     <%= @clean_orders.count %>
   </p>
   <div class='charts'>
     <%= line_chart(@agr_period_count_hash, height: "150px") %>
   </div>
 
-  <h5 class='float-left'>Sales</h5>
-  <p class='subtitles'>
+  <h5 class='float-left margin-top'>Sales</h5>
+  <p class='subtitles margin-top'>
     <%= @total %>
   </p>
   <div class='charts'>
     <%= column_chart(@agr_period_sum_hash, height: "150px") %>
   </div>
-
-  <p class='search-bar'>
+</div>
+<div class='search-background'>
+  <div class='search-bar'>
+    <h5>Displaying orders between
+      <%= @created_after_date %>
+      and
+      <%= @created_before_date %>
+      by
+      <%= @group_by_period %>
+    </h5>
+  </div>
+  <div class='search-bar roboto'>
     <%= form_tag("/welcome", method: "get") do %>
-      <%= label_tag(:q, "Refresh with orders on and after") %>
+      <%= label_tag(:q, "Refresh with orders after") %>
       <%= date_field_tag(:q) %>
-      <%= label_tag(:qq, "Refresh with orders before") %>
+      <%= label_tag(:qq, "and before") %>
       <%= date_field_tag(:qq) %>
-      <%= label_tag(:qq, "Group orders by") %>
+      <%= label_tag(:qq, "by") %>
       <%= select(:qqq, "group_by_period", {
         :day => 'day',
         :week => 'week',
@@ -32,18 +42,5 @@
         :year => 'year'}) %>
       <%= submit_tag("Search") %>
     <% end %>
-  </p>
-
-  <h5 class='float-left'>Displaying orders between</h5>
-  <p class='subtitles'>
-    <%= @created_after_date %>
-  </p>
-  <h5 class='float-left'>and</h5>
-  <p class='subtitles'>
-    <%= @created_before_date %>
-  </p>
-  <h5 class='float-left'>grouped by</h5>
-  <p class='subtitles'>
-    <%= @group_by_period %>
-  </p>
+  </div>
 </div>
