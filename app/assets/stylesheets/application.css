@@ -110,6 +110,7 @@ h5 {
 
 .search-bar {
   text-align: center;
+  padding: 1em 0 1em 0;
 }
 
 .right-nav {
@@ -181,3 +182,4 @@ footer {
   font-size: 26px;
   width: 11em;
 }
+

@@ -17,7 +17,14 @@
     <%= column_chart(@agr_period_sum_hash, height: "150px") %>
   </div>
 
-  <p class='search-bar'>
+  <h5>Displaying orders between
+    <%= @created_after_date %>
+    and
+    <%= @created_before_date %>
+    by
+    <%= @group_by_period %>
+  </h5>
+  <div class='search-bar'>
     <%= form_tag("/welcome", method: "get") do %>
       <%= label_tag(:q, "Refresh with orders on and after") %>
       <%= date_field_tag(:q) %>
@@ -32,18 +39,6 @@
         :year => 'year'}) %>
       <%= submit_tag("Search") %>
     <% end %>
-  </p>
+  </div>
 
-  <h5 class='float-left'>Displaying orders between</h5>
-  <p class='subtitles'>
-    <%= @created_after_date %>
-  </p>
-  <h5 class='float-left'>and</h5>
-  <p class='subtitles'>
-    <%= @created_before_date %>
-  </p>
-  <h5 class='float-left'>grouped by</h5>
-  <p class='subtitles'>
-    <%= @group_by_period %>
-  </p>
 </div>
