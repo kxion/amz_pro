@@ -31,6 +31,7 @@ gem 'peddler'
 gem 'chartkick'
 gem 'groupdate'
 gem 'monetize'
+gem 'rack-cors', :require => 'rack/cors'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
