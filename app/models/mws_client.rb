@@ -7,10 +7,10 @@ class MwsClient
 
   def get_clean_orders(created_after, created_before)
     @client = MWS.orders(
-      primary_marketplace_id: "",
+      primary_marketplace_id: ENV['PRIMARY_MARKETPLACE_ID'],
       merchant_id: @merchant_id,
-      aws_access_key_id: "",
-      aws_secret_access_key: "",
+      aws_access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+      aws_secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
       auth_token: @auth_token
     )
 
