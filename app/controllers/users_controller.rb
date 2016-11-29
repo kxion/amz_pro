@@ -7,12 +7,17 @@ class UsersController < ApplicationController
   def create
     @user = User.create(create_user_params)
     @user.save
-    redirect_to @user
+    redirect_to login_path
   end
 
   def show
     @user = User.find(params[:id])
-    auth_hash = session[:auth_hash]
+    if session[:user_id] != @user.id
+      redirect_to root_path
+      flash[:error] = "You do not have access to other users' profiles"
+    else
+      auth_hash = session[:auth_hash]
+    end
   end
 
   private
