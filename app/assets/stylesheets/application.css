@@ -216,3 +216,7 @@ input {
   padding: 0 0 0 1em;
   margin: 0em;
 }
+
+.logo {
+  line-height:20px;
+}
