@@ -58,15 +58,12 @@ Monetize gem<br>
 ### Sprint 7 - Present
 
 ## Data Processing
-<img src='http://i.imgur.com/j24KNO2.png' height='200'>
+<img src='http://i.imgur.com/j24KNO2.png' height='300'><br>
 The data for this application is provided by Amazon's MWS API. A hash is returned that can have a NextToken. If there is a NextToken, additional requests are made and the hashes are condensed into one hash containing many orders. The condensed hash is then used to generate hashes that contain order counts and sales by day. Those are further aggregated by a the desired period. There is only a small user model for authentication.
 
 ## Wireframes
 <img src='http://i.imgur.com/rW05xDD.jpg' height='300'>
 
-## Cool Code
-* storing and calling methods in a hash
-* evaluating NextToken
 
 ## Hurdles
 * **Authorization**. To make a successful request of MWS, an authorization token and a merchant's id are required. This made creating a session a 2-step process.
